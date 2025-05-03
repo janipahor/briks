@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    overflow: auto; /* omogoči drsenje */
+}
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #000;
+    color: #fff;
+    /* odstranjen overflow: hidden; */
+}
+audio {
+    display: none;
+}
+
+/* Ensure Orbitron everywhere */
+.header,
+#hud,
+#controls label,
+#controls button,
+#controls select,
+#gameOverMenu h1,
+#gameOverMenu button {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Main container & background */
+.content {
+    min-height: 100vh; /* namesto height:100vh */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: url("../slike/ozadjeVesolje.jpg") center/cover no-repeat;
+    position: relative;
+    /* odstranjen overflow: hidden; */
+}
+.content::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 0;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    padding: 20px 0;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #00f3ff;
+    text-shadow: 0 0 10px #00f3ff, 0 0 20px #0066ff;
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(0,20,40,0.9) 0%, transparent 100%);
+}
+.header::after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(to right, transparent 0%, #00f3ff 50%, transparent 100%);
+    margin: 10px auto;
+    box-shadow: 0 0 10px #00f3ff;
+}
+
+/* Main game area */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+}
+#hud {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00f3ff;
+    text-shadow: 0 0 5px #00f3ff, 0 0 10px #0066ff;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.main canvas {
+    background-color: rgba(10,15,30,0.7);
+    border: 2px solid #00f3ff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #00f3ff, 0 0 40px rgba(0,102,255,0.5);
+    backdrop-filter: blur(2px);
+}
+
+/* Controls */
+#controls {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 1;
+}
+#controls label,
+#controls button,
+#controls select {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00f3ff;
+    background: linear-gradient(to bottom, #00f3ff, #0066ff);
+    color: #000;
+    transition: all 0.3s ease;
+}
+#controls button:hover,
+#controls select:hover {
+    box-shadow: 0 0 15px #00ffff;
+    transform: scale(1.05);
+}
+
+/* Game Over menu */
+#gameOverMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0,10,20,0.95);
+    padding: 40px 50px;
+    border: 2px solid #00f3ff;
+    border-radius: 15px;
+    z-index: 10;
+    box-shadow: 0 0 30px #00f3ff, inset 0 0 20px rgba(0,102,255,0.5);
+}
+#gameOverMenu h1 {
+    font-size: 2.5rem;
+    color: #00f3ff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #00f3ff;
+}
+#gameOverMenu button {
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    background: linear-gradient(to bottom, #00f3ff 0%, #0066ff 100%);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px #00f3ff;
+    transition: all 0.3s ease;
+}
+#gameOverMenu button:hover {
+    background: linear-gradient(to bottom, #00ffff 0%, #0099ff 100%);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #00ffff;
+}
+
+/* Win GIF */
+#winGif {
+    display: block;
+    max-width: 150px;
+    margin: 0;
+}
+
+/* Floating particles */
+.space-particle {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes float {
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    50%  { opacity: 1; }
+    100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+}

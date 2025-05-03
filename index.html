@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BRICKS FROM OUTER SPACE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    >
+    <script defer src="js/script.js"></script>
+</head>
+<body>
+    <!-- Audio -->
+    <audio id="bgMusic" src="audio/space_music.mp3" loop preload="auto"></audio>
+    <audio id="crashSound" src="audio/crash.mp3" preload="auto"></audio>
+
+    <div class="content">
+        <div class="header">BRICKS FROM OUTER SPACE</div>
+
+        <div class="main">
+            <div id="hud">
+                <span class="hud-icon">🚀</span>
+                <span id="scoreLabel">SCORE:</span>
+                <span id="scoreValue">0</span>
+                <span id="timeLabel">TIME:</span>
+                <span id="timeValue">0s</span>
+                <span id="highScoreLabel">HIGH SCORE:</span>
+                <span id="highScoreValue">0</span>
+            </div>
+
+            <canvas id="canva" width="560" height="450"></canvas>
+
+            <div id="controls">
+                <button id="pauseBtn">PAUSE GAME</button>
+                <button id="musicBtn">PLAY MUSIC</button>
+                <label for="difficulty">Težavnost:</label>
+                <select id="difficulty">
+                    <option value="easy">Lahko</option>
+                    <option value="medium" selected>Srednje</option>
+                    <option value="hard">Težko</option>
+                </select>
+            </div>
+
+            <div id="gameOverMenu">
+                <h1 id="endText">MISSION FAILED</h1>
+                <button id="restartBtn">RESTART MISSION</button>
+                <img id="winGif" src="slike/alien_dancing.gif" alt="Alien Dancing">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
